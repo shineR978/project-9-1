@@ -21,7 +21,15 @@ function App() {
             <Layout currentUser={currentUser} setCurrentUser={setCurrentUser} />
           }
         >
-          <Route index element={<HomeComponent />} />
+          <Route
+            index
+            element={
+              <HomeComponent
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
+          />
           <Route path="register" element={<RegisterComponent />} />
           <Route
             path="login"

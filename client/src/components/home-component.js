@@ -1,6 +1,34 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const HomeComponent = () => {
+const HomeComponent = ({ currentUser }) => {
+  const navigate = useNavigate();
+  const handleLogin = () => {
+    if (!currentUser) {
+      navigate("/login");
+    } else {
+      // 根據角色導向不同頁面
+      if (currentUser.role == "instructor") {
+        navigate("/course"); // 假設這是講師的個人資料頁面路徑
+      } else {
+        navigate("/Profile"); // 假設這是學生的個人資料頁面路徑
+      }
+    }
+  };
+  const handleInstructorLogin = () => {
+    if (!currentUser) {
+      navigate("/login");
+    } else {
+      // 只有當使用者是講師時才導向課程頁面
+      if (currentUser.user.role == "instructor") {
+        navigate("/course");
+      } else {
+        alert("只有講師才能新增課程，將導向課程頁面。");
+        navigate("/course");
+      }
+    }
+  };
+
   return (
     <main>
       <div className="container py-4">
@@ -25,19 +53,36 @@ const HomeComponent = () => {
               <p>
                 學生可以註冊他們喜歡的課程。本網站僅供練習之用，請勿提供任何個人資料，例如信用卡號碼。
               </p>
-              <button className="btn btn-outline-light" type="button">
-                登錄會員、或者註冊一個帳號
+              <button
+                onClick={handleLogin}
+                className="btn btn-outline-light"
+                type="button"
+              >
+                {currentUser
+                  ? currentUser.user.role == "student"
+                    ? "導向您的個人頁面"
+                    : "您不是學生"
+                  : "登錄會員、或者註冊一個帳號"}
               </button>
             </div>
           </div>
+
           <div className="col-md-6">
             <div className="h-100 p-5 bg-light border rounded-3">
               <h2>作為一個導師</h2>
               <p>
                 您可以通過註冊成為一名講師，並開始製作在線課程。本網站僅供練習之用，請勿提供任何個人資料，例如信用卡號碼。
               </p>
-              <button className="btn btn-outline-secondary" type="button">
-                今天開始開設課程
+              <button
+                onClick={handleInstructorLogin}
+                className="btn btn-outline-secondary"
+                type="button"
+              >
+                {currentUser
+                  ? currentUser.user.role == "instructor"
+                    ? "你已經登入了，點擊導向課程頁面"
+                    : "新增的課程"
+                  : "登錄會員、或者註冊一個帳號"}
               </button>
             </div>
           </div>
