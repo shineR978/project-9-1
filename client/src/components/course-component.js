@@ -35,6 +35,15 @@ const CourseComponent = ({ currentUser }) => {
       }
     }
   }, []);
+  const handleDelete = (_id) => {
+    CourseService.deleteCourse(_id).then(() => {
+      console.log(_id);
+    });
+  };
+
+  const handlePatch = () => {
+    navigate("/patchcourse");
+  };
 
   return (
     <div style={{ padding: "3rem" }}>
@@ -81,6 +90,59 @@ const CourseComponent = ({ currentUser }) => {
                     課程價格:{course.price}
                   </p>
                 </div>
+                {currentUser.user.role == "instructor" ? (
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      width: "100%",
+                      padding: "0 ",
+                    }}
+                  >
+                    <button
+                      id={course._id}
+                      onClick={handleDelete}
+                      className="btn btn-outline-danger"
+                      style={{
+                        borderRadius: "0",
+                        fontWeight: "bold",
+                        flex: 1,
+                        marginRight: "0",
+                      }}
+                      type="button"
+                    >
+                      刪除課程
+                    </button>
+                    <button
+                      id={course._id}
+                      onClick={handlePatch}
+                      className="btn btn-outline-info"
+                      style={{ borderRadius: "0", fontWeight: "bold", flex: 1 }}
+                      type="button"
+                    >
+                      修改課程
+                    </button>
+                  </div>
+                ) : (
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      width: "100%",
+                      padding: "0 ",
+                    }}
+                  >
+                    <button
+                      id={course._id}
+                      onClick={handleDelete}
+                      className="btn btn-outline-danger"
+                      style={{ borderRadius: "0", fontWeight: "bold", flex: 1 }} // 確保按鈕使用 flex: 1 來填滿容器
+                      type="button"
+                    >
+                      刪除課程
+                    </button>
+                  </div>
+                )}
               </div>
             );
           })}

@@ -47,6 +47,41 @@ class CourseService {
       headers: { Authorization: token },
     });
   }
+
+  //請求是講師刪除課程;
+  deleteCourse(_id) {
+    let token;
+    if (localStorage.getItem("user")) {
+      token = JSON.parse(localStorage.getItem("user")).token;
+    } else {
+      token = "";
+    }
+    return axios.delete(API_URL + "/instructor/" + _id, {
+      headers: { Authorization: token },
+    });
+  }
+
+  //請求是講師修改課程
+  patchCourse(title, description, price) {
+    let token;
+    // 從localStorage中獲取用戶token
+    if (localStorage.getItem("user")) {
+      token = JSON.parse(localStorage.getItem("user")).token;
+    } else {
+      token = "";
+    }
+    // 發送PATCH請求到API
+    return axios.patch(
+      API_URL,
+      {
+        title,
+        description,
+        price,
+      },
+      { headers: { Authorization: token } }
+    );
+  }
+
   //請求是尋找課程名稱
   getCourseByName(name) {
     let token;
@@ -68,7 +103,7 @@ class CourseService {
     } else {
       token = "";
     }
-    //怎麼要一個空物件??
+
     return axios.post(
       API_URL + "/enroll/" + _id,
       {},
