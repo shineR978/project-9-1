@@ -56,13 +56,14 @@ class CourseService {
     } else {
       token = "";
     }
-    return axios.delete(API_URL + "/instructor/" + _id, {
+    return axios.delete(API_URL + "/" + _id, {
       headers: { Authorization: token },
     });
   }
 
   //請求是講師修改課程
-  patchCourse(title, description, price) {
+  //postman API 要修改內容的參數
+  patchCourse(_id, title, description, price) {
     let token;
     // 從localStorage中獲取用戶token
     if (localStorage.getItem("user")) {
@@ -72,7 +73,7 @@ class CourseService {
     }
     // 發送PATCH請求到API
     return axios.patch(
-      API_URL,
+      API_URL + "/" + _id,
       {
         title,
         description,

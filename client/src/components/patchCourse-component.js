@@ -9,7 +9,13 @@ const PatchCourseComponent = ({ currentUser }) => {
   let [message, setMessage] = useState("");
   const navigate = useNavigate();
 
-  const [courseData, setCourseData] = useState({});
+  const queryParams = new URLSearchParams(window.location.search);
+  const id = queryParams.get("id"); // 檢查課程ID ?id=668d72640a2278c2f8c6cf8d"
+  // console.log(id);
+
+  // const [courseData, setCourseData] = useState([]); //陣列
+  const [courseData, setCourseData] = useState({}); //json
+
   useEffect(() => {
     let _id;
     if (currentUser) {
@@ -17,8 +23,11 @@ const PatchCourseComponent = ({ currentUser }) => {
       if (currentUser.user.role == "instructor") {
         CourseService.get(_id)
           .then((data) => {
-            console.log(data.data[0].title);
             setCourseData(data.data);
+            var _filterData = data.data.filter((course) => course._id === id); //[{篩選到的資料}] //filter=*
+            setTitle(_filterData[0].title);
+            setDescription(_filterData[0].description);
+            setPrice(_filterData[0].price);
           })
           .catch((e) => {
             console.log(e);
@@ -26,7 +35,6 @@ const PatchCourseComponent = ({ currentUser }) => {
       } else if (currentUser.user.role == "student") {
         CourseService.getEnrolledCourse(_id)
           .then((data) => {
-            console.log(data);
             setCourseData(data.data);
           })
           .catch((e) => {
@@ -57,14 +65,29 @@ const PatchCourseComponent = ({ currentUser }) => {
   };
 
   //講師點擊新增課程後，儲存輸入的資料
-  const updateCourse = (courseId) => {
-    CourseService.update(courseId, title, description, price)
+  const updateCourse = () => {
+    console.clear();
+    // foundData(...courseData);
+
+    // course-server內 設定的function
+    CourseService.patchCourse(
+      // courseData._id,
+      // courseData.title,
+      // courseData.description,
+      // courseData.price
+      // course-server內的API需要參數
+      id,
+      title,
+      description,
+      price
+    )
       .then(() => {
+        console.log("更新成功");
         window.alert("課程已更新成功");
         navigate("/course");
       })
       .catch((error) => {
-        console.log(error.response);
+        console.log("更新失敗" + error.response);
         setMessage(error.response.data);
       });
   };
@@ -108,7 +131,7 @@ const PatchCourseComponent = ({ currentUser }) => {
             className="form-control"
             id="exampleforContent"
             aria-describedby="emailHelp"
-            value={courseData.description}
+            value={description}
             name="content"
             onChange={handleChangeDesciption}
           />
@@ -121,6 +144,7 @@ const PatchCourseComponent = ({ currentUser }) => {
             type="number"
             className="form-control"
             id="exampleforPrice"
+            value={price}
             onChange={handleChangePrice}
           />
 

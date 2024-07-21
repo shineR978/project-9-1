@@ -19,6 +19,7 @@ const CourseComponent = ({ currentUser }) => {
         CourseService.get(_id)
           .then((data) => {
             setCourseData(data.data);
+            console.log(data.data);
           })
           .catch((e) => {
             console.log(e);
@@ -28,6 +29,7 @@ const CourseComponent = ({ currentUser }) => {
           .then((data) => {
             console.log(data);
             setCourseData(data.data);
+            console.log(data.data);
           })
           .catch((e) => {
             console.log(e);
@@ -35,14 +37,32 @@ const CourseComponent = ({ currentUser }) => {
       }
     }
   }, []);
-  const handleDelete = (_id) => {
-    CourseService.deleteCourse(_id).then(() => {
-      console.log(_id);
-    });
+
+  const foundData = (id) => {
+    let _filterData = courseData.filter((course) => course._id !== id); //  回傳陣列
+    setCourseData(_filterData); //回傳剩下陣列
   };
 
-  const handlePatch = () => {
-    navigate("/patchcourse");
+  const handleDelete = (e) => {
+    console.clear();
+    console.log(e.target.id);
+
+    CourseService.deleteCourse(e.target.id)
+      .then(() => {
+        console.clear();
+        console.log("刪除成功");
+        foundData(e.target.id);
+        window.alert("您已經刪除課程");
+      })
+      .catch((e) => {
+        console.clear();
+        console.log(e);
+      });
+  };
+
+  const handlePatch = (e) => {
+    console.log(e);
+    navigate(`/patchcourse?id=${e.target.id}`);
   };
 
   return (
