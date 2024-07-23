@@ -135,21 +135,58 @@ router.patch("/:_id", async (req, res) => {
   }
 });
 
+//只有講師可以刪除課程
+// router.delete("/:_id", async (req, res) => {
+//   let { _id } = req.params;
+//   // 確認課程存在
+//   try {
+//     let courseFound = await Course.findOne({ _id }).exec();
+//     if (!courseFound) {
+//       return res.status(400).send("找不到課程。無法刪除課程。");
+//     }
+
+//     // 使用者必須是此課程講師，才能刪除課程
+//     if (courseFound.instructor.equals(req.user._id)) {
+//       await Course.deleteOne({ _id }).exec();
+//       return res.send("課程已被刪除。");
+//     } else {
+//       return res.status(403).send("只有此課程的講師才能刪除課程。");
+//     }
+//   } catch (e) {
+//     return res.status(500).send(e);
+//   }
+// });
+
 router.delete("/:_id", async (req, res) => {
   let { _id } = req.params;
   // 確認課程存在
   try {
     let courseFound = await Course.findOne({ _id }).exec();
     if (!courseFound) {
-      return res.status(400).send("找不到課程。無法刪除課程。");
+      return res.status(400).send("找不到課程。無法刪除或取消課程。");
     }
 
-    // 使用者必須是此課程講師，才能刪除課程
+    // 如果是講師，允許刪除課程
     if (courseFound.instructor.equals(req.user._id)) {
+      //使用 deleteOne 方法來刪除整個課程文檔。
       await Course.deleteOne({ _id }).exec();
       return res.send("課程已被刪除。");
+
+      // // includes(判斷一名已註冊課程的學生)
+    } else if (courseFound.students.includes(req.user._id)) {
+      // 檢查是否為已註冊的學生
+      // 學生取消課程的邏輯
+      // 假設 `students` 是存儲學生ID的陣列
+      // updateOne只是從課程中移除學生，表示學生取消了對該課程的註冊。
+      await Course.updateOne(
+        { _id },
+        { $pull: { students: req.user._id } }
+      ).exec();
+      return res.send("已成功取消課程。");
     } else {
-      return res.status(403).send("只有此課程的講師才能刪除課程。");
+      return res
+        .status(403)
+        .send("只有此課程的講師或已註冊的學生才能執行此操作。");
     }
   } catch (e) {
     return res.status(500).send(e);

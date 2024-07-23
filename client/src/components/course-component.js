@@ -38,26 +38,47 @@ const CourseComponent = ({ currentUser }) => {
     }
   }, []);
 
+  //為了可以使用課程狀態 另外拉出課程資料 方便後續的刪除修改動作
   const foundData = (id) => {
-    let _filterData = courseData.filter((course) => course._id !== id); //  回傳陣列
-    setCourseData(_filterData); //回傳剩下陣列
+    // 比對ID=ID 是的話就要顯示這個單筆資料
+    let _filterData = courseData.filter((course) => course._id !== id);
+    // console.log(_filterData);
+    setCourseData(_filterData); //回傳更新找到的ID 回傳一個陣列
   };
 
+  //處理學生跟講師的刪除/取消課程
   const handleDelete = (e) => {
-    console.clear();
-    console.log(e.target.id);
-
-    CourseService.deleteCourse(e.target.id)
-      .then(() => {
-        console.clear();
-        console.log("刪除成功");
-        foundData(e.target.id);
-        window.alert("您已經刪除課程");
-      })
-      .catch((e) => {
-        console.clear();
-        console.log(e);
-      });
+    try {
+      if (currentUser.user.role == "student") {
+        // 學生身分取消課程
+        console.log("學生正嘗試取消課程", e.target.id);
+        CourseService.deleteCourse(e.target.id)
+          .then(() => {
+            console.log("取消成功");
+            foundData(e.target.id);
+            window.alert("您已經取消課程");
+          })
+          .catch((error) => {
+            console.error("取消失败", error);
+            window.alert("取消課程失敗");
+          });
+      } else if (currentUser.user.role == "instructor") {
+        // 講師身分刪除課程
+        console.log("講師正在刪除課程", e.target.id);
+        CourseService.deleteCourse(e.target.id)
+          .then(() => {
+            console.log("刪除成功");
+            foundData(e.target.id);
+            window.alert("您已經刪除成功");
+          })
+          .catch((error) => {
+            console.error("刪除失败", error);
+            window.alert("刪除課程失败");
+          });
+      }
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const handlePatch = (e) => {
@@ -159,7 +180,7 @@ const CourseComponent = ({ currentUser }) => {
                       style={{ borderRadius: "0", fontWeight: "bold", flex: 1 }} // 確保按鈕使用 flex: 1 來填滿容器
                       type="button"
                     >
-                      刪除課程
+                      取消課程
                     </button>
                   </div>
                 )}
