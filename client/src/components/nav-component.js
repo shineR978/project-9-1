@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import AuthService from "../services/auth-service";
 
 //有登入當前使用者
-const NavComponent = ({ currentUser, setCurrentUse }) => {
+const NavComponent = ({ currentUser, setCurrentUser }) => {
   const handleLoginout = () => {
     AuthService.logout(); //清空Local storage
     window.alert("您已經成功登出，將為您導向首頁");
-    setCurrentUse(null);
+    setCurrentUser(null);
   };
 
   return (
@@ -17,7 +17,7 @@ const NavComponent = ({ currentUser, setCurrentUse }) => {
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container-fluid">
             <button
-              class="navbar-toggler"
+              className="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarNav"
@@ -25,7 +25,7 @@ const NavComponent = ({ currentUser, setCurrentUse }) => {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span class="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon"></span>
             </button>
 
             <div className="collapse navbar-collapse" id="navbarNav">

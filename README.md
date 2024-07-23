@@ -2,11 +2,13 @@
 
 製作一個課程專案。學生可以尋找想要的課程與講師，講師可以新建課程並得知有幾個學生報名課程。
 
-# 課程專案需要 install 的套件
+# install node_modules
 
 ---
 
-### server 資料夾內下載
+### 請在 server 與 client 資料夾內 下命令 npm install
+
+### 請確保 server/package 下有以下的套件
 
 ---
 
@@ -23,7 +25,7 @@
 <li>cors</li>
 </ol>
 
-### client 資料夾內下載
+### client/package
 
 ---
 
@@ -37,23 +39,13 @@
 
 ---
 
-## 打開"命令提示字元"
+## client >>> npm start
 
-## 將路徑導向至專案內的 client 資料夾 (cd client)
-
-## npm start
+## server >>> nodemon .\index.js
 
 ---
 
-## 打開 VScode，將路徑導向至專案內的 server 資料夾
-
-## nodemon .\index.js (cd server)
-
-**必須 client 與 server 都要啟動**
-
----
-
-# 使用課程專案 Web
+# 登入使用者
 
 ---
 
@@ -61,17 +53,19 @@
 
 ### 也可以使用我這邊已經註冊的講師與學生
 
-##### 講師 / instructor /
+##### 講師:
 
 ###### carrie123@gmail.com
 
 ###### carrie123
 
-##### 學生 / nana /
+##### 學生:
 
 ###### nana123@gmail.com
 
 ###### nana123
+
+###### 學生已註冊一個課程
 
 ---
 
@@ -81,6 +75,8 @@
 
 ### 2024 入門 HTML/CSS
 
-### 心理學: 從容不迫的處理事情
+### 如何讓自己更有效率
+
+### 刺激的衝浪課程
 
 **必須!一字不漏的唷**

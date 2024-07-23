@@ -61,7 +61,7 @@ const HomeComponent = ({ currentUser }) => {
                 {currentUser
                   ? currentUser.user.role == "student"
                     ? "導向您的個人頁面"
-                    : "您不是學生"
+                    : "您不是學生，導向您的個人頁面"
                   : "登錄會員、或者註冊一個帳號"}
               </button>
             </div>
@@ -80,7 +80,7 @@ const HomeComponent = ({ currentUser }) => {
               >
                 {currentUser
                   ? currentUser.user.role == "instructor"
-                    ? "你已經登入了，點擊導向課程頁面"
+                    ? "您已經登入了，點擊導向課程頁面"
                     : "新增的課程"
                   : "登錄會員、或者註冊一個帳號"}
               </button>

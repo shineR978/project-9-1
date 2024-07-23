@@ -66,7 +66,7 @@ const PatchCourseComponent = ({ currentUser }) => {
 
   //講師點擊新增課程後，儲存輸入的資料
   const updateCourse = () => {
-    console.clear();
+    // console.clear();
     // foundData(...courseData);
 
     // course-server內 設定的function
@@ -114,7 +114,7 @@ const PatchCourseComponent = ({ currentUser }) => {
 
       {currentUser && courseData && courseData.length != 0 && (
         <div className="form-group">
-          <label for="exampleforTitle">課程標題：</label>
+          <label htmlFor="exampleforTitle">課程標題：</label>
           <input
             name="title"
             type="text"
@@ -126,7 +126,7 @@ const PatchCourseComponent = ({ currentUser }) => {
 
           <br />
 
-          <label for="exampleforContent">內容：</label>
+          <label htmlFor="exampleforContent">內容：</label>
           <textarea
             className="form-control"
             id="exampleforContent"
@@ -138,7 +138,7 @@ const PatchCourseComponent = ({ currentUser }) => {
 
           <br />
 
-          <label for="exampleforPrice">價格：</label>
+          <label htmlFor="exampleforPrice">價格：</label>
           <input
             name="price"
             type="number"

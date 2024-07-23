@@ -66,7 +66,7 @@ const PostCourseComponent = (props) => {
 
       {currentUser && currentUser.user.role == "instructor" && (
         <div className="form-group">
-          <label for="exampleforTitle">課程標題：</label>
+          <label htmlFor="exampleforTitle">課程標題：</label>
           <input
             name="title"
             type="text"
@@ -77,7 +77,7 @@ const PostCourseComponent = (props) => {
 
           <br />
 
-          <label for="exampleforContent">內容：</label>
+          <label htmlFor="exampleforContent">內容：</label>
           <textarea
             className="form-control"
             id="exampleforContent"
@@ -88,7 +88,7 @@ const PostCourseComponent = (props) => {
 
           <br />
 
-          <label for="exampleforPrice">價格：</label>
+          <label htmlFor="exampleforPrice">價格：</label>
           <input
             name="price"
             type="number"

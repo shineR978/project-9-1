@@ -19,7 +19,7 @@ const CourseComponent = ({ currentUser }) => {
         CourseService.get(_id)
           .then((data) => {
             setCourseData(data.data);
-            console.log(data.data);
+            // console.log(data.data);
           })
           .catch((e) => {
             console.log(e);
@@ -27,9 +27,9 @@ const CourseComponent = ({ currentUser }) => {
       } else if (currentUser.user.role == "student") {
         CourseService.getEnrolledCourse(_id)
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             setCourseData(data.data);
-            console.log(data.data);
+            // console.log(data.data);
           })
           .catch((e) => {
             console.log(e);
@@ -82,7 +82,7 @@ const CourseComponent = ({ currentUser }) => {
   };
 
   const handlePatch = (e) => {
-    console.log(e);
+    // console.log(e);
     navigate(`/patchcourse?id=${e.target.id}`);
   };
 
@@ -118,7 +118,11 @@ const CourseComponent = ({ currentUser }) => {
         <div style={{ display: "flex", flexWrap: "wrap" }}>
           {courseData.map((course) => {
             return (
-              <div className="card" style={{ width: "18rem ", margin: "1rem" }}>
+              <div
+                key={course._id}
+                className="card"
+                style={{ width: "18rem ", margin: "1rem" }}
+              >
                 <div className="card-body">
                   <h5 className="card-title">課程名稱:{course.title}</h5>
                   <p style={{ margin: "0.5rem 0rem" }} className="card-text">
