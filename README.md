@@ -1,8 +1,9 @@
-![首頁演示](../課程專案9-1/client/src/photo/首頁.jpg)
+![首頁演示](../project9-1/client/src/photo/首頁.jpg)
 
-![講師課程頁面](../課程專案9-1/client/src/photo/講師的課程.JPG)
+![講師課程頁面](../project9-1/client/src/photo/講師的課程.JPG)
 
-![學生課程頁面](../課程專案9-1/client/src/photo/學生課程.JPG)
+![學生課程頁面](../project9-1/client/src/photo/學生課程.JPG)
+
 
 ## 課程內容
 
