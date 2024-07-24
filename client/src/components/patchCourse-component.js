@@ -114,7 +114,7 @@ const PatchCourseComponent = ({ currentUser }) => {
 
       {currentUser && courseData && courseData.length != 0 && (
         <div className="form-group">
-          <label htmlFor="exampleforTitle">課程標題：</label>
+          <label htmlFor="exampleforTitle">修改課程標題：</label>
           <input
             name="title"
             type="text"
@@ -126,7 +126,7 @@ const PatchCourseComponent = ({ currentUser }) => {
 
           <br />
 
-          <label htmlFor="exampleforContent">內容：</label>
+          <label htmlFor="exampleforContent">修改課程內容：</label>
           <textarea
             className="form-control"
             id="exampleforContent"
@@ -138,7 +138,7 @@ const PatchCourseComponent = ({ currentUser }) => {
 
           <br />
 
-          <label htmlFor="exampleforPrice">價格：</label>
+          <label htmlFor="exampleforPrice">修改課程價格：</label>
           <input
             name="price"
             type="number"
@@ -150,7 +150,7 @@ const PatchCourseComponent = ({ currentUser }) => {
 
           <br />
 
-          <button className="btn btn-primary" onClick={updateCourse}>
+          <button className="btn btn-outline-info" onClick={updateCourse}>
             修改表單
           </button>
 

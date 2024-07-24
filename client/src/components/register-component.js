@@ -89,16 +89,18 @@ const RegisterComponent = () => {
         </div>
 
         <br />
-
         <div className="form-group">
-          <label htmlFor="password">身份：</label>
-          <input
+          <label htmlFor="role">身份：</label>
+          <select
             onChange={handleRole}
-            type="text"
             className="form-control"
-            placeholder="只能填入student或是instructor這兩個選項其一"
             name="role"
-          />
+            id="role"
+          >
+            <option value="">請選擇身份</option>
+            <option value="student">student</option>
+            <option value="instructor">instructor</option>
+          </select>
         </div>
 
         <br />

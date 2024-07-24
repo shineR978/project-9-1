@@ -1,82 +1,50 @@
-# project-9-1
+![首頁演示](/project-9-1/client/src/photo/首頁.jpg)
 
-製作一個課程專案。學生可以尋找想要的課程與講師，講師可以新建課程並得知有幾個學生報名課程。
+![講師課程頁面](/project-9-1/client/src/photo/講師的課程.jpg)
 
-# install node_modules
+![學生課程頁面](/project-9-1/client/src/photo/學生課程.jpg)
 
----
+## 課程內容
 
-### 請在 server 與 client 資料夾內 下命令 npm install
+- 學生用戶可以進行**搜尋課程**、**取消課程**及**註冊課程**
+- 講師用戶可以去**新增課程**、**修改課程**及**刪除課程**
+- 新用戶可以去**註冊會員**
 
-### 請確保 server/package 下有以下的套件
+## 開發工具
 
----
+###### 這是一個全棧開發項目，使用 MongoDB 和 Node.js 作為後端開發。後端 API 通過 Postman 進行測試和管理。前端部分採用 React 進行開發，並使用 Bootstrap 來設計和美化 CSS 樣式。這樣的技術組合確保了應用程序的高效運行和優雅的用戶界面。
 
-<ol>
-<li>express</li>
-<li>dotenv</li>
-<li>bcrypt</li>
-<li>mongoose</li>
-<li>axios</li>
-<li>joi</li>
-<li>jsonwebtoken</li>
-<li>passport jwt</li>
-<li>passport-local</li>
-<li>cors</li>
-</ol>
+## 執行專案需要的環境
 
-### client/package
+> 下載 MongoDB 7.0 版本 [MongoDB Community Server Download](https://www.mongodb.com/try/download/community)
+> 在命令提示字元輸入 mongosh 可查詢版本
 
 ---
 
-<ol>
-<li>react-router-dom</li>
-</ol>
+- 分別在 client 與 server 資料夾安裝 nodemon
+
+```
+   npm install --save-dev nodemon
+```
 
 ---
 
-# 啟動 client 與 server
+- 使用學生與講師的腳本登入資料
+
+```
+npm run import-accounts
+```
 
 ---
 
-## client >>> npm start
-
-## server >>> nodemon .\index.js
+- 啟動 client 與 server 伺服器
 
 ---
 
-# 登入使用者
+```
+client
+ npm start
 
----
-
-### 您可以註冊一個學生或是講師
-
-### 也可以使用我這邊已經註冊的講師與學生
-
-##### 講師:
-
-###### carrie123@gmail.com
-
-###### carrie123
-
-##### 學生:
-
-###### nana123@gmail.com
-
-###### nana123
-
-###### 學生已註冊一個課程
-
----
-
-# 講師的課程名稱搜尋
-
----
-
-### 2024 入門 HTML/CSS
-
-### 如何讓自己更有效率
-
-### 刺激的衝浪課程
-
-**必須!一字不漏的唷**
+server
+  nodemon.\index.js
+```
