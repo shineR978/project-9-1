@@ -23,11 +23,13 @@
 
 - 分別在 client 與 server 資料夾安裝 nodemon
 
+##### 只在此專案使用
 ```
-只在此專案使用
    npm install --save-dev nodemon
+```
 
-如果無法在專案內下載 請使用全域下載
+##### 如果無法在專案內下載 請使用全域下載
+```
    npm install -g nodemon
 ```
 
@@ -38,15 +40,15 @@
 ```
 npm run import-accounts
 ```
-
 ---
 
 ## 啟動 client 與 server 伺服器
 
+##### client
 ```
-client
  npm start
-
-server
-  nodemon.\index.js
+```
+##### server
+```
+  nodemon .\index.js
 ```
