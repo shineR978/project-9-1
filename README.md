@@ -1,8 +1,8 @@
-![首頁演示](/project-9-1/client/src/photo/首頁.jpg)
+![首頁演示](../課程專案9-1/client/src/photo/首頁.jpg)
 
-![講師課程頁面](/project-9-1/client/src/photo/講師的課程.jpg)
+![講師課程頁面](../課程專案9-1/client/src/photo/講師的課程.JPG)
 
-![學生課程頁面](/project-9-1/client/src/photo/學生課程.jpg)
+![學生課程頁面](../課程專案9-1/client/src/photo/學生課程.JPG)
 
 ## 課程內容
 
@@ -23,39 +23,20 @@
 
 - 分別在 client 與 server 資料夾安裝 nodemon
 
-<<<<<<< HEAD
 ```
    npm install --save-dev nodemon
 ```
-=======
-##### 只在此專案使用
-```
-   npm install --save-dev nodemon
-```
-
-##### 如果無法在專案內下載 請使用全域下載
-```
-   npm install -g nodemon
-```
->>>>>>> f07df9c856e372abdbb405c20b9caebab10243dc
 
 ---
 
 - 使用學生與講師的腳本登入資料
-<<<<<<< HEAD
 
 ```
 npm run import-accounts
 ```
-=======
->>>>>>> f07df9c856e372abdbb405c20b9caebab10243dc
 
-```
-npm run import-accounts
-```
 ---
 
-<<<<<<< HEAD
 - 啟動 client 與 server 伺服器
 
 ---
@@ -66,15 +47,4 @@ client
 
 server
   nodemon.\index.js
-=======
-## 啟動 client 與 server 伺服器
-
-##### client
-```
- npm start
-```
-##### server
-```
-  nodemon .\index.js
->>>>>>> f07df9c856e372abdbb405c20b9caebab10243dc
 ```
