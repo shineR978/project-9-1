@@ -23,11 +23,6 @@
 
 - 分別在 client 與 server 資料夾安裝 nodemon
 
-<<<<<<< HEAD
-```
-   npm install --save-dev nodemon
-```
-=======
 ##### 只在此專案使用
 ```
    npm install --save-dev nodemon
@@ -37,36 +32,16 @@
 ```
    npm install -g nodemon
 ```
->>>>>>> f07df9c856e372abdbb405c20b9caebab10243dc
 
 ---
 
 - 使用學生與講師的腳本登入資料
-<<<<<<< HEAD
-
-```
-npm run import-accounts
-```
-=======
->>>>>>> f07df9c856e372abdbb405c20b9caebab10243dc
 
 ```
 npm run import-accounts
 ```
 ---
 
-<<<<<<< HEAD
-- 啟動 client 與 server 伺服器
-
----
-
-```
-client
- npm start
-
-server
-  nodemon.\index.js
-=======
 ## 啟動 client 與 server 伺服器
 
 ##### client
@@ -76,5 +51,4 @@ server
 ##### server
 ```
   nodemon .\index.js
->>>>>>> f07df9c856e372abdbb405c20b9caebab10243dc
 ```
