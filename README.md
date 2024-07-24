@@ -35,10 +35,11 @@ npm run import-accounts
 
 ## 啟動 client 與 server 伺服器
 
+###### client
 ```
-client
  npm start
-
-server
+```
+###### server
+```
   nodemon.\index.js
 ```
