@@ -20,26 +20,27 @@
 > 下載 MongoDB 7.0 版本 [MongoDB Community Server Download](https://www.mongodb.com/try/download/community)
 > 在命令提示字元輸入 mongosh 可查詢版本
 
+#
 
-## 分別在 client 與 server 資料夾安裝 nodemon
+### 分別在 client 與 server 資料夾安裝 nodemon
 
 ```
-   npm install --save-dev nodemon
+npm install --save-dev nodemon
 ```
 
-## 使用學生與講師的腳本登入資料
+### 使用學生與講師的腳本登入資料
 
 ```
 npm run import-accounts
 ```
 
-## 啟動 client 與 server 伺服器
+### 啟動 client 與 server 伺服器
 
 ###### client
 ```
- npm start
+npm start
 ```
 ###### server
 ```
-  nodemon.\index.js
+nodemon .\index.js
 ```
