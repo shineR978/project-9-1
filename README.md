@@ -1,10 +1,3 @@
-![首頁演示](../project9-1/client/src/photo/首頁.jpg)
-
-![講師課程頁面](../project9-1/client/src/photo/講師的課程.JPG)
-
-![學生課程頁面](../project9-1/client/src/photo/學生課程.JPG)
-
-
 ## 課程內容
 
 - 學生用戶可以進行**搜尋課程**、**取消課程**及**註冊課程**
@@ -37,10 +30,18 @@ npm run import-accounts
 ### 啟動 client 與 server 伺服器
 
 ###### client
+
 ```
 npm start
 ```
+
 ###### server
+
 ```
 nodemon .\index.js
 ```
+
+###### 已建立的課程(搜尋課程)
+
+- 2024\_入門課程
+- 讓自己更有效率
