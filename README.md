@@ -24,8 +24,13 @@
 
 ### 分別在 client 與 server 資料夾安裝 nodemon
 
+###### 僅在此專案內下載
 ```
 npm install --save-dev nodemon
+```
+###### 若無法使用僅在此專案下載 請使用全域下載
+```
+npm install -g nodemon
 ```
 
 ### 使用學生與講師的腳本登入資料
